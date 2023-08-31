@@ -10,7 +10,7 @@ const Login = () => {
         const provider = new GoogleAuthProvider();
         const result = await signInWithPopup(auth, provider);
 
-        console.log(result);
+        // console.log(result);
         navigate('/blogs')
     }
     return (
