@@ -1,6 +1,6 @@
 import {React} from 'react'
 import {getAuth} from 'firebase/auth'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
 // import Login from './Login'
 
 const Navbar = () => {
@@ -8,6 +8,7 @@ const Navbar = () => {
   console.log(getAuth());
 
 const navigate = useNavigate();
+const location = useLocation();
 
   const logout = () => {
     auth.signOut();
@@ -24,7 +25,11 @@ navigate('/')
         </div>
 
         <div className="email d-flex justify-content-center align-items-center" style={{gap: '1rem'}}>
-          <button className='btn btn-warning'>Add Blog</button>
+
+        {/* { (location.pathName==='/blogs') ? (<Link to={'/addblog'} className='btn btn-warning'>Add Blog</Link>) : '' } */}
+        { location.pathname==='/blogs' && <Link to={'/addblog'} className='btn btn-warning'>Add Blog</Link> }
+        { location.pathname!=='/blogs' && <Link to={'/blogs'} className='btn btn-warning'>Back to Blogs</Link> }
+
             <h4>{auth?.currentUser.email}</h4>
           <button className='btn btn-danger' onClick={logout}>Log-out</button>
 

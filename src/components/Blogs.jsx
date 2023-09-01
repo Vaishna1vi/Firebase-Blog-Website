@@ -12,8 +12,8 @@ const Blogs = () => {
     <div className="container d-flex flex-column justify-content-center align-items-center my-3">
       <div className="contain" >
     <div className="user-content d-flex justify-content-center align-items-center" style={{gap: '0.5rem', width: '90%'}}>
-            <img src={auth?.currentUser.photoURL} alt="" style={{width: '12%', height: '12%', borderRadius: '50%', margin: '1rem'}}/>
-            <h3>{auth?.currentUser.displayName}</h3>
+            <img src={auth?.currentUser?.photoURL} alt="google_login" style={{width: '12%', height: '12%', borderRadius: '50%', margin: '1rem'}}/>
+            <h3>{auth?.currentUser?.displayName}</h3>
         </div>
         </div>
     <div className="card mb-3 bg-secondary" style={{maxWidth: '700px'}}>
