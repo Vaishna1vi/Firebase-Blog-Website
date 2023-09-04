@@ -4,6 +4,8 @@ import Navbar from './Navbar'
 import {db} from '../Firebase'
 import { addDoc, collection, } from 'firebase/firestore'
 import { getAuth } from 'firebase/auth'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const AddBlog = () => {
   const auth = getAuth();
@@ -14,8 +16,8 @@ const AddBlog = () => {
     shortDesc: '',
     fullDesc: '',
     img: '',
-    authorName: auth.currentUser.displayName,
-    authorImg: auth.currentUser.photoURL,
+    authorName: auth?.currentUser?.displayName,
+    authorImg: auth?.currentUser?.photoURL,
   })
 
   const handleChange = (e) => {
@@ -40,11 +42,37 @@ setFormData({
   img: '',
 })
 
-navigate('/blogs')
+toast.success('🦄 Data submitted successfully!', {
+  position: "top-right",
+  autoClose: 2500,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "dark",
+  });
+
+  setTimeout( () => {
+    navigate('/blogs')
+  }, 3000);
+
   }
 
   return (
     <>
+    <ToastContainer
+position="top-right"
+autoClose={2500}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="dark"
+/>
       <Navbar />
       <div className="container my-3" style={{ width: '60%', lineHeight: '1rem' }}>
         <form onSubmit={submitHandler}>
